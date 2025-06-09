@@ -84,6 +84,3 @@ C#のクラスとオブジェクト指向プログラミングの基礎につい
 - AnimalShelterクラス: 動物の管理機能
 - メソッド: AddAnimal, GetAllAnimals, GetAnimalsByType
 - メインメソッドで動物シェルターをテストし、各動物の鳴き声を表示する
-
-## 解答例
-解答例は `Solutions/` フォルダにあります。

@@ -242,7 +242,7 @@ class CSharpPracticeApp {
     }
 
     renderExercise(exerciseData) {
-        const markdownHtml = parseMarkdown(exerciseData.readme);
+        const markdownHtml = marked.parse(exerciseData.readme);
         const solutionsHtml = this.renderSolutions(exerciseData.solutions);
         
         return `

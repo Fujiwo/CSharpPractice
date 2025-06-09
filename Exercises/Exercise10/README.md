@@ -34,6 +34,3 @@ C#の例外処理（try-catch-finally）について学習します。
 - カスタム例外 InvalidOperationException を作成
 - 複数の計算を実行し、エラー発生時の適切な処理を実装
 - ログ機能を追加して例外情報を記録する
-
-## 解答例
-解答例は `Solutions/` フォルダにあります。

@@ -21,11 +21,8 @@ website/
 ├── index.html              # メインのHTMLファイル
 ├── css/
 │   ├── style.css          # メインのスタイルシート
-│   └── prism.css          # シンタックスハイライト用CSS
 ├── js/
 │   ├── app.js             # メインのJavaScriptアプリケーション
-│   ├── marked.min.js      # Markdownパーサー
-│   └── prism.js           # シンタックスハイライト
 ├── data/
 │   └── exercises.json     # 演習データ（自動生成）
 ├── extract-data.py        # データ抽出スクリプト
