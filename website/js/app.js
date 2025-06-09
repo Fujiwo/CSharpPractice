@@ -19,16 +19,42 @@ class CSharpPracticeApp {
             dropdownContent.innerHTML = this.exercises.map(exercise => 
                 `<li><a href="#${exercise.id}">${exercise.title}</a></li>`
             ).join('');
+            
+            // Re-setup event listeners for new links
+            this.setupDropdownListeners();
         }
     }
 
     async loadExerciseData() {
+        const content = document.getElementById('content');
+        if (content) {
+            content.innerHTML = '<div class="loading"><div class="spinner"></div><p>演習データを読み込んでいます...</p></div>';
+        }
+        
         try {
             const response = await fetch('data/exercises.json');
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
             this.exercises = await response.json();
+            
+            if (!Array.isArray(this.exercises) || this.exercises.length === 0) {
+                throw new Error('演習データが見つかりません');
+            }
         } catch (error) {
             console.error('Failed to load exercise data:', error);
             this.exercises = [];
+            
+            if (content) {
+                content.innerHTML = `
+                    <div class="error-message">
+                        <h2>データの読み込みに失敗しました</h2>
+                        <p>演習データを読み込むことができませんでした。</p>
+                        <p>エラー: ${error.message}</p>
+                        <button onclick="location.reload()" class="retry-button">再試行</button>
+                    </div>
+                `;
+            }
         }
     }
 
@@ -42,14 +68,8 @@ class CSharpPracticeApp {
             });
         });
 
-        // Dropdown links
-        document.querySelectorAll('.dropdown-content a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const href = link.getAttribute('href');
-                this.navigate(href);
-            });
-        });
+        // Initial dropdown setup and re-setup after data loads
+        this.setupDropdownListeners();
 
         // Handle browser back/forward
         window.addEventListener('popstate', (e) => {
@@ -57,6 +77,24 @@ class CSharpPracticeApp {
                 this.navigate(e.state.section, false);
             }
         });
+
+        // Handle initial hash
+        if (window.location.hash) {
+            this.navigate(window.location.hash);
+        }
+    }
+
+    setupDropdownListeners() {
+        // Re-setup dropdown links after dynamic content is added
+        setTimeout(() => {
+            document.querySelectorAll('.dropdown-content a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    this.navigate(href);
+                });
+            });
+        }, 100);
     }
 
     navigate(section, pushState = true) {
