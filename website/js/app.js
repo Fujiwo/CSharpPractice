@@ -207,9 +207,9 @@ class CSharpPracticeApp {
             content.innerHTML = this.renderExercise(exerciseData);
             
             // Apply syntax highlighting
-            setTimeout(() => {
-                applySyntaxHighlighting();
-            }, 100);
+            // setTimeout(() => {
+            //     applySyntaxHighlighting();
+            // }, 100);
         } catch (error) {
             content.innerHTML = `<div class="error">エラー: 演習データを読み込めませんでした。</div>`;
             console.error('Error loading exercise:', error);
