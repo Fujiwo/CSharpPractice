@@ -1,0 +1,90 @@
+/* Prism.js CSS for syntax highlighting */
+pre[class*="language-"] {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 1.5rem;
+    border-radius: 6px;
+    overflow: auto;
+    margin: 1.5rem 0;
+}
+
+code[class*="language-"] {
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* Token colors for C# */
+.token.comment {
+    color: #6a9955;
+    font-style: italic;
+}
+
+.token.keyword {
+    color: #569cd6;
+    font-weight: bold;
+}
+
+.token.string {
+    color: #ce9178;
+}
+
+.token.number {
+    color: #b5cea8;
+}
+
+.token.class-name {
+    color: #4ec9b0;
+}
+
+.token.function {
+    color: #dcdcaa;
+}
+
+.token.operator {
+    color: #d4d4d4;
+}
+
+.token.punctuation {
+    color: #d4d4d4;
+}
+
+.token.property {
+    color: #9cdcfe;
+}
+
+.token.namespace {
+    color: #4ec9b0;
+}
+
+/* Custom classes for our simple highlighter */
+.comment {
+    color: #6a9955;
+    font-style: italic;
+}
+
+.keyword {
+    color: #569cd6;
+    font-weight: bold;
+}
+
+.string {
+    color: #ce9178;
+}
+
+.number {
+    color: #b5cea8;
+}
+
+.class-name {
+    color: #4ec9b0;
+}
+
+.function {
+    color: #dcdcaa;
+}
